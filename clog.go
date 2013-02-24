@@ -3,7 +3,6 @@
 // This is not exhaustive or feature-rich.
 //
 // Author: Clint Caywood (www.clintcaywood.com)
-// License: Public domain
 package clog
 
 import (

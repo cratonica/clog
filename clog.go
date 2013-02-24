@@ -72,7 +72,7 @@ func (this *Clog) Fatal(format string, v ...interface{}) {
 func (this *Clog) Log(level Level, format string, v ...interface{}) {
     message := fmt.Sprintf(format + "\n", v...)
     strTimestamp := getTimestamp()
-    strFinal := fmt.Sprintf("%s [%7s] %s", strTimestamp, LevelStrings[level], message)
+    strFinal := fmt.Sprintf("%s [%-7s] %s", strTimestamp, LevelStrings[level], message)
     bytes := []byte(strFinal)
     this.mtx.Lock()
     defer this.mtx.Unlock()
@@ -86,7 +86,7 @@ func (this *Clog) Log(level Level, format string, v ...interface{}) {
 // Gets the timestamp string
 func getTimestamp() string {
     now := time.Now()
-    return fmt.Sprintf("%v-%02v-%02d %02d:%02d:%02d.%03d", now.Year(), now.Month(), now.Day(), now.Hour(), now.Minute(), now.Second(), now.Nanosecond() / 1000000)
+    return fmt.Sprintf("%v-%02d-%02d %02d:%02d:%02d.%03d", now.Year(), now.Month(), now.Day(), now.Hour(), now.Minute(), now.Second(), now.Nanosecond() / 1000000)
 }
 
 

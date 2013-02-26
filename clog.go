@@ -55,6 +55,8 @@ func NewClog() *Clog {
 // if you pass Warning for level, all logs of type
 // Warning, Error, and Fatal would be logged to this output.
 func (this *Clog) AddOutput(writer io.Writer, level Level) {
+    this.mtx.Lock()
+    defer this.mtx.Unlock()
 	this.outputs = append(this.outputs, output{writer, level})
 }
 

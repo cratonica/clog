@@ -19,7 +19,7 @@ import (
 type Level uint8
 
 const (
-	LevelFatal Level = iota + 1
+	LevelFatal Level = iota
 	LevelError
 	LevelWarning
 	LevelInfo
@@ -32,6 +32,14 @@ var levelStrings = map[Level]string{
 	LevelWarning: "Warning",
 	LevelInfo:    "Info",
 	LevelTrace:   "Trace",
+}
+
+func (this Level) String() string {
+	result := levelStrings[this]
+	if len(result) == 0 {
+		return fmt.Sprintf("Unknown Level: %d", this)
+	}
+	return result
 }
 
 type output struct {

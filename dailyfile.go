@@ -51,6 +51,8 @@ func (this *DailyFile) rollToNextFile(now time.Time) error {
 	if err != nil {
 		log.Printf("Clog: Unable to open %v for writing\n", newFileName)
 		return err
+	} else {
+		this.lastFileChange = time.Now()
 	}
 	return err
 }
